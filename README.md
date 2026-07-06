@@ -1,235 +1,288 @@
-<p align="center">
-    <picture>
-        <source media="(prefers-color-scheme: dark)" srcset="https://www.yiiframework.com/image/design/logo/yii3_full_for_dark.svg">
-        <source media="(prefers-color-scheme: light)" srcset="https://www.yiiframework.com/image/design/logo/yii3_full_for_light.svg">
-        <img src="https://www.yiiframework.com/image/design/logo/yii3_full_for_light.svg" alt="Yii Framework" height="100">
-    </picture>
-    <h1 align="center">Yii 2 Basic Project Template</h1>
-    <br>
-</p>
+# Student Internship Portal
 
-Yii 2 Basic Project Template is a skeleton [Yii 2](https://www.yiiframework.com/) application best for
-rapidly creating small projects.
-
-The template contains the basic features including user login/logout and a contact page.
-It includes all commonly used configurations that would allow you to focus on adding new
-features to your application.
-
-[![Latest Stable Version](https://img.shields.io/packagist/v/yiisoft/yii2-app-basic.svg?style=for-the-badge&label=Stable&logo=packagist)](https://packagist.org/packages/yiisoft/yii2-app-basic)
-[![Total Downloads](https://img.shields.io/packagist/dt/yiisoft/yii2-app-basic.svg?style=for-the-badge&label=Downloads)](https://packagist.org/packages/yiisoft/yii2-app-basic)
-[![build](https://img.shields.io/github/actions/workflow/status/yiisoft/yii2-app-basic/build.yml?style=for-the-badge&logo=github&label=Build)](https://github.com/yiisoft/yii2-app-basic/actions?query=workflow%3Abuild)
-[![codecov](https://img.shields.io/codecov/c/github/yiisoft/yii2-app-basic.svg?style=for-the-badge&logo=codecov&logoColor=white&label=Codecov)](https://codecov.io/gh/yiisoft/yii2-app-basic)
-[![Static Analysis](https://img.shields.io/github/actions/workflow/status/yiisoft/yii2-app-basic/static.yml?style=for-the-badge&label=Static)](https://github.com/yiisoft/yii2-app-basic/actions/workflows/static.yml)
-
-<picture>
-    <source media="(prefers-color-scheme: dark)" srcset="docs/images/home-dark.png">
-    <source media="(prefers-color-scheme: light)" srcset="docs/images/home-light.png">
-    <img src="docs/images/home-light.png" alt="Web Application Basic">
-</picture>
-
-## Docker
-
-[![Apache](https://img.shields.io/github/actions/workflow/status/yiisoft/yii2-app-basic/docker.yml?style=for-the-badge&logo=apache&label=Apache)](https://github.com/yiisoft/yii2-app-basic/actions/workflows/docker.yml)
-
-DIRECTORY STRUCTURE
--------------------
-
-      assets/             contains assets definition
-      commands/           contains console commands (controllers)
-      config/             contains application configurations
-      controllers/        contains Web controller classes
-      mail/               contains view files for e-mails
-      models/             contains model classes
-      runtime/            contains files generated during runtime
-      tests/              contains various tests for the basic application
-      vendor/             contains dependent 3rd-party packages
-      views/              contains view files for the Web application
-      web/                contains the entry script and Web resources
-
-REQUIREMENTS
-------------
-
-The minimum requirement by this project template that your Web server supports PHP 8.2.
-
-INSTALLATION
-------------
-
-> [!IMPORTANT]
-> - The minimum required [PHP](https://www.php.net/) version of Yii is PHP `8.2`.
-
-## Install via Composer
-
-If you do not have [Composer](https://getcomposer.org/), you may install it by following the instructions
-at [getcomposer.org](https://getcomposer.org/doc/00-intro.md#installation-nix).
-
-You can then install this project template using the following command:
-
-~~~
-composer create-project --prefer-dist yiisoft/yii2-app-basic basic
-~~~
-
-Now you should be able to access the application through the following URL, assuming `basic` is the directory
-directly under the Web root.
-
-~~~
-http://localhost/basic/web/
-~~~
-
-## Install from an Archive File
-
-Extract the archive file downloaded from [yiiframework.com](https://www.yiiframework.com/download/) to
-a directory named `basic` that is directly under the Web root.
-
-Set cookie validation key in `config/web.php` file to some random secret string:
-
-```php
-'request' => [
-    // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-    'cookieValidationKey' => '<secret random string goes here>',
-],
-```
-
-You can then access the application through the following URL:
-
-~~~
-http://localhost/basic/web/
-~~~
-
-## Install with Docker
-
-Update your vendor packages
-
-    docker-compose run --rm php composer update --prefer-dist
-    
-Run the installation triggers (creating cookie validation code)
-
-    docker-compose run --rm php composer install    
-    
-Start the container
-
-    docker-compose up -d
-    
-You can then access the application through the following URL:
-
-    http://127.0.0.1:8000
-
-Run tests inside the container
-
-    docker compose exec -T php vendor/bin/codecept build
-    docker compose exec -T php vendor/bin/codecept run
-
-**NOTES:** 
-- Minimum required Docker engine version `17.04` for development (see [Performance tuning for volume mounts](https://docs.docker.com/docker-for-mac/osxfs-caching/))
-- The default configuration uses a host-volume in your home directory `~/.composer-docker/cache` for Composer caches
+A web-based internship management system built with **PHP Yii2 Framework** and **PostgreSQL**. The project allows university students (interns) to register, log in, and manage articles while providing a practical introduction to the Yii2 MVC architecture, authentication, ActiveRecord, and CRUD operations.
 
 
-CONFIGURATION
--------------
 
-## Database
+Project Overview
 
-Edit the file `config/db.php` with real data, for example:
+The Student Internship Portal was developed as a learning project to strengthen my understanding of PHP, the Yii2 Framework, PostgreSQL, and object-oriented programming. Instead of relying entirely on Yii2's Gii code generator, many features were implemented manually to better understand how the framework works behind the scenes.
 
-```php
-return [
-    'class' => 'yii\db\Connection',
-    'dsn' => 'mysql:host=localhost;dbname=yii2basic',
-    'username' => 'root',
-    'password' => '1234',
-    'charset' => 'utf8',
-];
-```
+The application currently supports:
 
-**NOTES:**
-- Yii won't create the database for you, this has to be done manually before you can access it.
-- Check and edit the other files in the `config/` directory to customize your application as required.
-- Refer to the README in the `tests` directory for information specific to basic application tests.
+* Intern registration
+* Secure login using hashed passwords
+* Article creation
+* Viewing articles
+* Editing articles
+* Deleting articles
+* University selection during registration
+* Authentication using Yii2 IdentityInterface
 
-TESTING
--------
 
-Tests are located in `tests` directory. They are developed with [Codeception PHP Testing Framework](https://codeception.com/).
-By default, there are 3 test suites:
 
-- `unit`
-- `functional`
-- `acceptance`
+## Technologies Used
 
-Tests can be executed by running
+* PHP
+* Yii2 Framework
+* PostgreSQL
+* Bootstrap 5
+* HTML5
+* CSS3
+* DBeaver
+* VS Code
+* Ubuntu Linux
+
+---
+
+## Features
+
+### Guest Users
+
+* View landing page
+* Register as a new intern
+* Login to the system
+
+### Interns
+
+* Login securely
+* Create articles
+* View all articles
+* view their own articles
+* Update articles
+* Delete articles
+
+---
+
+## Database Tables
+
+### Interns
+
+* id
+* first_name
+* last_name
+* username
+* email
+* password_hash
+* auth_key
+* university_id
+
+### Universities
+
+* id
+* university_name
+
+### Articles
+
+* id
+* title
+* description
+* rating
+* created_on
+* interns_id (fk to pick intern who created that article)
+
+---
+
+## Project Structure
 
 ```
-vendor/bin/codecept run --env php-builtin
+controllers/
+    SiteController.php
+    ArticlesController.php
+
+models/
+    Interns.php
+    Articles.php
+    University.php
+    LoginForm.php
+
+views/
+    site/
+    articles/
+    layouts/
+
+config/
+    web.php
+
+web/
+    images/
 ```
 
-The command above will execute unit and functional tests. Unit tests are testing the system components, while functional
-tests are for testing user interaction.
+---
 
+## Authentication
 
-## Acceptance tests
+Authentication is implemented using Yii2's `IdentityInterface`.
 
-The `acceptance` suite is configured in `tests/Acceptance.suite.yml`.
+During signup:
 
-### Acceptance tests (PhpBrowser)
+* Passwords are hashed before being stored in the database.
+* An authentication key is generated for each intern.
 
-By default, acceptance tests use the `PhpBrowser` module and run against the built-in PHP web server started via the
-`php-builtin` environment.
+During login:
+
+* The entered username is searched in the Interns table.
+* The entered password is compared with the stored password hash.
+* If successful, Yii creates a user session.
+
+---
+
+## CRUD Operations
+
+### Create
+
+Interns can create new articles.
+
+### Read
+
+Interns can view the list of created articles.
+
+### Update
+
+Existing articles can be edited using the same form used for creation.
+
+### Delete
+
+Articles can be permanently removed from the database.
+
+---
+
+## What I Learned
+
+This project helped me understand:
+
+* MVC architecture
+* ActiveRecord models
+* Controllers and actions
+* Views and ActiveForm
+* Routing in Yii2
+* Database relationships
+* Password hashing
+* User authentication
+* IdentityInterface
+* CRUD operations
+* Form validation
+* Bootstrap integration
+* PostgreSQL with Yii2
+
+---
+
+## Challenges Faced
+
+Throughout development, I encountered several issues that became valuable learning experiences.
+
+### Authentication
+
+* Understanding how `IdentityInterface` works.
+* Configuring the Interns model to act as the application's authenticated user.
+* Implementing login without using Yii2's default User model.
+
+### Password Handling
+
+* Confusion between `password` and `password_hash`.
+* Learning to hash passwords during registration.
+* Validating hashed passwords correctly during login.
+
+### Routing
+
+* Incorrect controller routes.
+* Redirecting to non-existent actions.
+* InvalidRouteException errors.
+
+### Forms
+
+* Submit button placed outside the ActiveForm.
+* Forms not submitting because of incorrect HTML structure.
+* Missing model being passed to the login view.
+
+### Database
+
+* Foreign key naming inconsistencies.
+* Forgetting to save related IDs.
+* Missing required columns such as `auth_key`.
+
+### Relationships
+
+* Incorrect `hasOne()` and `hasMany()` relationships.
+* Confusion about where relationships belong.
+* Attempting to define relationships inside a Form Model.
+
+### Debugging
+
+* Learning to use:
+
+  * var_dump()
+  * $model->errors
+  * PostgreSQL table inspection
+
+---
+
+## Future Improvements
+
+Some features planned for future versions include:
+
+* Role-based access control
+* Internship supervisors
+* Weekly progress reports
+* File uploads
+* Profile management
+* Search and filtering
+* Dashboard analytics
+* Password reset
+* Email verification
+* Pagination
+* Responsive dashboard
+
+---
+
+## Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/your-username/student-internship-portal.git
+```
+
+Move into the project:
+
+```bash
+cd student-internship-portal
+```
+
+Install dependencies:
+
+```bash
+composer install
+```
+
+Configure your PostgreSQL database in:
 
 ```
-# run all tests with built-in web server
-composer tests
-
-# run acceptance tests only
-vendor/bin/codecept run Acceptance --env php-builtin
+config/db.php
 ```
 
-### Acceptance tests (WebDriver + Selenium)
+Run the application:
 
-To run acceptance tests in a real browser, switch the `acceptance` suite to use the `WebDriver` module.
-`tests/Acceptance.suite.yml` contains an example WebDriver configuration (commented).
-
-1. Download and start [Selenium Server](https://www.selenium.dev/downloads/).
-2. Install the corresponding browser driver (for example. [GeckoDriver](https://github.com/mozilla/geckodriver/releases) or
-   [ChromeDriver](https://googlechromelabs.github.io/chrome-for-testing/)).
-3. Update `tests/Acceptance.suite.yml` to enable `WebDriver` and disable `PhpBrowser`.
-4. Run:
-
-```
-vendor/bin/codecept run Acceptance --env php-builtin
+```bash
+php yii serve
 ```
 
-## Code coverage support
-
-Code coverage is configured in `codeception.yml`. You can run your tests and collect coverage with the following command:
+Open:
 
 ```
-#collect coverage for all tests
-vendor/bin/codecept run --coverage --coverage-html --coverage-xml --env php-builtin
-
-#collect coverage only for unit tests
-vendor/bin/codecept run Unit --coverage --coverage-html --coverage-xml --env php-builtin
-
-#collect coverage for unit and functional tests
-vendor/bin/codecept run Functional,Unit --coverage --coverage-html --coverage-xml --env php-builtin
+http://localhost:8080
 ```
 
-You can see code coverage output under the `tests/Support/output` directory.
+---
 
-## Documentation
+## Author
 
-- [Internals](docs/internals.md)
+**Nakyanzi Faridah**
 
-## Support the project
+This project was built as part of my journey to become a full-stack PHP developer. The focus was on understanding concepts thoroughly by building features manually rather than relying solely on automated code generation.
 
-[![Open Collective](https://img.shields.io/badge/Open%20Collective-sponsor-7eadf1?style=for-the-badge&logo=open%20collective&logoColor=7eadf1&labelColor=555555)](https://opencollective.com/yiisoft)
-
-## Follow updates
-
-[![Official website](https://img.shields.io/badge/Powered_by-Yii_Framework-green.svg?style=for-the-badge&logo=yii)](https://www.yiiframework.com/)
-[![Follow on X](https://img.shields.io/badge/-Follow%20on%20X-1DA1F2.svg?style=for-the-badge&logo=x&logoColor=white&labelColor=000000)](https://x.com/yiiframework)
-[![Telegram](https://img.shields.io/badge/telegram-join-1DA1F2?style=for-the-badge&logo=telegram)](https://t.me/yii_framework_in_english)
-[![Slack](https://img.shields.io/badge/slack-join-1DA1F2?style=for-the-badge&logo=slack)](https://yiiframework.com/go/slack)
+---
 
 ## License
 
-[![License](https://img.shields.io/badge/License-BSD--3--Clause-brightgreen.svg?style=for-the-badge&logo=opensourceinitiative&logoColor=white&labelColor=555555)](LICENSE.md)
-# articles
+This project is available for learning, educational purposes, and portfolio demonstration.
